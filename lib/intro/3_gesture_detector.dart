@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: 'Flutter Tutorial',
-    home: TutorialHome(),
+    home: Home(),
   ));
 }
 
@@ -30,7 +30,7 @@ class MyButton extends StatelessWidget {
   }
 }
 
-class TutorialHome extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Scaffold is a layout for the major Material Components.

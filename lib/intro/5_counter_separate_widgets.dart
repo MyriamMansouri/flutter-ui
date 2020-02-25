@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Flutter Tutorial',
-    home: TutorialHome(),
+    title: 'Flutter Counter',
+    home: CounterHome(),
   ));
 }
 
-class TutorialHome extends StatelessWidget {
+class CounterHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Scaffold is a layout for the major Material Components.

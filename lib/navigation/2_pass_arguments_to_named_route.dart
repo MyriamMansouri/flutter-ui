@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
               },
             );
           }
+
+          return null;
         },
         title: 'Navigation with Arguments',
         home: HomeScreen(),
