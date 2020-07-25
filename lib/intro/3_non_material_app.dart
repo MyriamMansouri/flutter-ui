@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class MyAppBar extends StatelessWidget {
   MyAppBar({this.title});
 
-  // Fields in a Widget subclass are always marked "final".
-
   final Widget title;
 
   @override
@@ -48,7 +46,7 @@ class MyScaffold extends StatelessWidget {
           MyAppBar(
             title: Text(
               'Example title',
-              style: Theme.of(context).primaryTextTheme.title,
+              style: Theme.of(context).primaryTextTheme.headline6,
             ),
           ),
           Expanded(

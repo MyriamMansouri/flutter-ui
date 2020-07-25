@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Because there's too many bugs.
+
 void main() {
   runApp(MaterialApp(
     title: 'Flutter Counter',
