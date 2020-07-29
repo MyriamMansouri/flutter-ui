@@ -1,7 +1,6 @@
-# flutter_ui
+# Flutter Social
 
-A Flutter application to demonstrate the examples at:
-https://flutter.dev/docs/development/ui
+A Social Network built using Flutter & Firebase
 
 ## Getting Started
 
