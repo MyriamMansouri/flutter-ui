@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
@@ -36,8 +36,7 @@ class HomePageState extends State<HomePage> {
   final _pageOptions = [
     ContentPage(title: "Content"),
     ChatPage(title: "Chat"),
-    ProfilePage(title: "Profile"),
-    SettingsPage(title: "Settinigs"),
+    ProfilePage(),
   ];
 
   @override
@@ -53,7 +52,6 @@ class HomePageState extends State<HomePage> {
           Icon(Icons.play_circle_outline, size: 30),
           Icon(Icons.chat, size: 30),
           Icon(Icons.account_circle, size: 30),
-          Icon(Icons.settings, size: 30),
         ],
         animationDuration: Duration(milliseconds: 200),
         animationCurve: Curves.bounceInOut,
