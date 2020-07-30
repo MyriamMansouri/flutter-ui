@@ -2,6 +2,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/util/constants.dart';
 import 'package:flutter_ui/widgets/profile_list_item.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';

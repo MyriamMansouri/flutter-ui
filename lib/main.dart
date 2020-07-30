@@ -1,5 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:flutter_ui/page/chat_page.dart';
 import 'package:flutter_ui/page/content_page.dart';
 import 'package:flutter_ui/page/login_page.dart';
@@ -37,6 +39,7 @@ class HomePageState extends State<HomePage> {
     ContentPage(title: "Content"),
     ChatPage(title: "Chat"),
     ProfilePage(),
+    SettingsPage(),
   ];
 
   @override
