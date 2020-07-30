@@ -45,11 +45,6 @@ class ProfileListItem extends StatelessWidget {
             ),
           ),
           Spacer(),
-          if (this.hasNavigation)
-            Icon(
-              LineAwesomeIcons.angle_right,
-              size: kSpacingUnit.w * 2.5,
-            ),
         ],
       ),
     );
