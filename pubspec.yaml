@@ -73,6 +73,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/SF-Pro-Text-Bold.otf
           weight: 700
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

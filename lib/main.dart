@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/page/chat_page.dart';
 import 'package:flutter_ui/page/content_page.dart';
 import 'package:flutter_ui/page/login_page.dart';
-import 'package:flutter_ui/page/profile_page.dart';
 import 'package:flutter_ui/page/settings_page.dart';
+import 'package:flutter_ui/page/profile_page.dart';
 import 'package:flutter_ui/util/SizeConfig.dart';
 import 'package:flutter_ui/util/constants.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   title: 'Flutter Social',
                   theme: ThemeProvider.of(context),
-                  home: HomePage(),
+                  home: LoginPage(),
                 );
               },
             );
@@ -46,10 +46,10 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedTab = 0;
   final _pageOptions = [
-    LoginPage(),
-    ChatPage(title: "Chat"),
-    SettingsPage(),
+    ContentPage(),
+    ChatPage(),
     ProfilePage(),
+    SettingsPage(),
   ];
 
   @override
@@ -57,7 +57,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       body: _pageOptions[_selectedTab],
       bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.white,
+        color: Colors.blueGrey,
         backgroundColor: Colors.blueAccent,
         buttonBackgroundColor: Colors.blue,
         height: 50,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ui/main.dart';
+import 'package:flutter_ui/page/conversation_page.dart';
 import 'package:flutter_ui/util/constants.dart';
 
 class LoginPage extends StatefulWidget {
@@ -127,7 +129,12 @@ class _LoginPageState extends State<LoginPage> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => HomePage(),
+          ),
+        ),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -199,13 +206,13 @@ class _LoginPageState extends State<LoginPage> {
           _buildSocialBtn(
             () => print('Login with Facebook'),
             AssetImage(
-              'assets/logos/facebook.jpg',
+              'assets/images/facebook.jpg',
             ),
           ),
           _buildSocialBtn(
             () => print('Login with Google'),
             AssetImage(
-              'assets/logos/google.jpg',
+              'assets/images/google.jpg',
             ),
           ),
         ],

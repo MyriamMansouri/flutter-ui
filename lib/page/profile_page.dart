@@ -1,168 +1,403 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui/util/constants.dart';
-import 'package:flutter_ui/widgets/profile_list_item.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:flutter_ui/util/SizeConfig.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  ProfilePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
-
-    var profileInfo = Expanded(
-      child: Column(
+    return Scaffold(
+      backgroundColor: Color(0xffF8F8FA),
+      body: Stack(
+        overflow: Overflow.visible,
         children: <Widget>[
           Container(
-            height: kSpacingUnit.w * 10,
-            width: kSpacingUnit.w * 10,
-            margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
-            child: Stack(
-              children: <Widget>[
-                CircleAvatar(
-                  radius: kSpacingUnit.w * 5,
-                  backgroundImage: AssetImage('assets/images/avatar.png'),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    height: kSpacingUnit.w * 2.5,
-                    width: kSpacingUnit.w * 2.5,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      heightFactor: kSpacingUnit.w * 1.5,
-                      widthFactor: kSpacingUnit.w * 1.5,
-                      child: Icon(
-                        LineAwesomeIcons.pen,
-                        color: kDarkPrimaryColor,
-                        size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: kSpacingUnit.w * 2),
-          Text(
-            'Nicolas Adams',
-            style: kTitleTextStyle,
-          ),
-          SizedBox(height: kSpacingUnit.w * 0.5),
-          Text(
-            'nicolasadams@gmail.com',
-            style: kCaptionTextStyle,
-          ),
-          SizedBox(height: kSpacingUnit.w * 2),
-          Container(
-            height: kSpacingUnit.w * 4,
-            width: kSpacingUnit.w * 20,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-              color: Theme.of(context).accentColor,
-            ),
-            child: Center(
-              child: Text(
-                'Upgrade to PRO',
-                style: kButtonTextStyle,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-
-    var themeSwitcher = ThemeSwitcher(
-      builder: (context) {
-        return AnimatedCrossFade(
-          duration: Duration(milliseconds: 200),
-          crossFadeState:
-              ThemeProvider.of(context).brightness == Brightness.dark
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
-          firstChild: GestureDetector(
-            onTap: () =>
-                ThemeSwitcher.of(context).changeTheme(theme: kLightTheme),
-            child: Icon(
-              LineAwesomeIcons.sun,
-              size: ScreenUtil().setSp(kSpacingUnit.w * 3),
-            ),
-          ),
-          secondChild: GestureDetector(
-            onTap: () =>
-                ThemeSwitcher.of(context).changeTheme(theme: kDarkTheme),
-            child: Icon(
-              LineAwesomeIcons.moon,
-              size: ScreenUtil().setSp(kSpacingUnit.w * 3),
-            ),
-          ),
-        );
-      },
-    );
-
-    var header = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(width: kSpacingUnit.w * 3),
-        Icon(
-          LineAwesomeIcons.arrow_left,
-          size: ScreenUtil().setSp(kSpacingUnit.w * 3),
-        ),
-        profileInfo,
-        themeSwitcher,
-        SizedBox(width: kSpacingUnit.w * 3),
-      ],
-    );
-
-    return ThemeSwitchingArea(
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-            body: Column(
-              children: <Widget>[
-                SizedBox(height: kSpacingUnit.w * 5),
-                header,
-                Expanded(
-                  child: ListView(
+            color: Colors.blue[600],
+            height: 40 * SizeConfig.heightMultiplier,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: 30.0,
+                  right: 30.0,
+                  top: 10 * SizeConfig.heightMultiplier),
+              child: Column(
+                children: <Widget>[
+                  Row(
                     children: <Widget>[
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.user_shield,
-                        text: 'Privacy',
+                      Container(
+                        height: 11 * SizeConfig.heightMultiplier,
+                        width: 22 * SizeConfig.widthMultiplier,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    "assets/images/profileimg.png"))),
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.history,
-                        text: 'Purchase History',
+                      SizedBox(
+                        width: 5 * SizeConfig.widthMultiplier,
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.question_circle,
-                        text: 'Help & Support',
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Neil Sullivan Paul",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 3 * SizeConfig.textMultiplier,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 1 * SizeConfig.heightMultiplier,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/fb.png",
+                                    height: 3 * SizeConfig.heightMultiplier,
+                                    width: 3 * SizeConfig.widthMultiplier,
+                                  ),
+                                  SizedBox(
+                                    width: 2 * SizeConfig.widthMultiplier,
+                                  ),
+                                  Text(
+                                    "Protorix",
+                                    style: TextStyle(
+                                      color: Colors.white60,
+                                      fontSize: 1.5 * SizeConfig.textMultiplier,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 7 * SizeConfig.widthMultiplier,
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/insta.png",
+                                    height: 3 * SizeConfig.heightMultiplier,
+                                    width: 3 * SizeConfig.widthMultiplier,
+                                  ),
+                                  SizedBox(
+                                    width: 2 * SizeConfig.widthMultiplier,
+                                  ),
+                                  Text(
+                                    "Protorix",
+                                    style: TextStyle(
+                                      color: Colors.white60,
+                                      fontSize: 1.5 * SizeConfig.textMultiplier,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 3 * SizeConfig.heightMultiplier,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "10.2K",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 3 * SizeConfig.textMultiplier,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Protorix",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 1.9 * SizeConfig.textMultiplier,
+                            ),
+                          ),
+                        ],
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.cog,
-                        text: 'Settings',
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "543",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 3 * SizeConfig.textMultiplier,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Following",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 1.9 * SizeConfig.textMultiplier,
+                            ),
+                          ),
+                        ],
                       ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.user_plus,
-                        text: 'Invite a Friend',
-                      ),
-                      ProfileListItem(
-                        icon: LineAwesomeIcons.alternate_sign_out,
-                        text: 'Logout',
-                        hasNavigation: false,
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white60),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "EDIT PROFILE",
+                            style: TextStyle(
+                                color: Colors.white60,
+                                fontSize: 1.8 * SizeConfig.textMultiplier),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                )
-              ],
+                ],
+              ),
             ),
-          );
-        },
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 35 * SizeConfig.heightMultiplier),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
+                  )),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 30.0, top: 3 * SizeConfig.heightMultiplier),
+                      child: Text(
+                        "My Albums",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 2.2 * SizeConfig.textMultiplier),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3 * SizeConfig.heightMultiplier,
+                    ),
+                    Container(
+                      height: 37 * SizeConfig.heightMultiplier,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          _myAlbumCard(
+                              "assets/images/travelfive.png",
+                              "assets/images/traveltwo.png",
+                              "assets/images/travelsix.png",
+                              "assets/images/travelthree.png",
+                              "+178",
+                              "Best Trip"),
+                          _myAlbumCard(
+                              "assets/images/travelsix.png",
+                              "assets/images/travelthree.png",
+                              "assets/images/travelfour.png",
+                              "assets/images/travelfive.png",
+                              "+18",
+                              "Hill Lake Tourism"),
+                          _myAlbumCard(
+                              "assets/images/travelfive.png",
+                              "assets/images/travelsix.png",
+                              "assets/images/traveltwo.png",
+                              "assets/images/travelone.png",
+                              "+1288",
+                              "The Grand Canyon"),
+                          SizedBox(
+                            width: 10 * SizeConfig.widthMultiplier,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3 * SizeConfig.heightMultiplier,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "Favourite places",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 2.2 * SizeConfig.textMultiplier),
+                          ),
+                          Spacer(),
+                          Text(
+                            "View All",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 1.7 * SizeConfig.textMultiplier),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3 * SizeConfig.heightMultiplier,
+                    ),
+                    Container(
+                      height: 20 * SizeConfig.heightMultiplier,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          _favoriteCard("assets/images/travelfive.png"),
+                          _favoriteCard("assets/images/travelthree.png"),
+                          _favoriteCard("assets/images/travelfive.png"),
+                          SizedBox(
+                            width: 10 * SizeConfig.widthMultiplier,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3 * SizeConfig.heightMultiplier,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  _myAlbumCard(String asset1, String asset2, String asset3, String asset4,
+      String more, String name) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40.0),
+      child: Container(
+        height: 37 * SizeConfig.heightMultiplier,
+        width: 60 * SizeConfig.widthMultiplier,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
+            border: Border.all(color: Colors.grey, width: 0.2)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      asset1,
+                      height: 27 * SizeConfig.imageSizeMultiplier,
+                      width: 27 * SizeConfig.imageSizeMultiplier,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Spacer(),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      asset2,
+                      height: 27 * SizeConfig.imageSizeMultiplier,
+                      width: 27 * SizeConfig.imageSizeMultiplier,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 1 * SizeConfig.heightMultiplier,
+              ),
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      asset3,
+                      height: 27 * SizeConfig.imageSizeMultiplier,
+                      width: 27 * SizeConfig.imageSizeMultiplier,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Spacer(),
+                  Stack(
+                    overflow: Overflow.visible,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.asset(
+                          asset4,
+                          height: 27 * SizeConfig.imageSizeMultiplier,
+                          width: 27 * SizeConfig.imageSizeMultiplier,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Positioned(
+                        child: Container(
+                          height: 27 * SizeConfig.imageSizeMultiplier,
+                          width: 27 * SizeConfig.imageSizeMultiplier,
+                          decoration: BoxDecoration(
+                              color: Colors.black38,
+                              borderRadius: BorderRadius.circular(10.0)),
+                          child: Center(
+                            child: Text(
+                              more,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 2.5 * SizeConfig.textMultiplier,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: 10.0, top: 2 * SizeConfig.heightMultiplier),
+                child: Text(
+                  name,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 2 * SizeConfig.textMultiplier,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _favoriteCard(String s) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: Image.asset(
+          s,
+          height: 20 * SizeConfig.heightMultiplier,
+          width: 70 * SizeConfig.widthMultiplier,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
